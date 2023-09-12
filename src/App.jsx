@@ -17,6 +17,8 @@ function App() {
         >
           Descripción e Icono
         </li>
+        <li onClick={() => toast.success("Mi success toast")}>Toast Success</li>
+        <li onClick={() => toast.error("Mi error toast")}>Toast Error</li>
       </ul>
       <Toaster />
     </main>
