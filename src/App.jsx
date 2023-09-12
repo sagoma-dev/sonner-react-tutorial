@@ -7,6 +7,13 @@ function simulatePromise() {
   });
 }
 
+async function fetchUserData() {
+  const res = await fetch(
+    `https://reqres.in/api/users/${Math.round(Math.random() * 10)}`
+  );
+  return await res.json();
+}
+
 function App() {
   return (
     <main>
@@ -47,6 +54,18 @@ function App() {
           }}
         >
           Toast con Promesas
+        </li>
+        <li
+          onClick={() => {
+            toast.promise(fetchUserData, {
+              error: "Algo salio mal",
+              success: ({ data }) =>
+                `Bienvenido ${data.first_name} ${data.last_name}`,
+              loading: "Cargando...",
+            });
+          }}
+        >
+          Toast con Promesas y fn en la resolucion
         </li>
       </ul>
       <Toaster />
