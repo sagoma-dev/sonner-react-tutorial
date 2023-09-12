@@ -19,6 +19,18 @@ function App() {
         </li>
         <li onClick={() => toast.success("Mi success toast")}>Toast Success</li>
         <li onClick={() => toast.error("Mi error toast")}>Toast Error</li>
+        <li
+          onClick={() =>
+            toast("Mi toast con boton", {
+              action: {
+                label: "Aceptar",
+                onClick: () => console.log("Aceptar"),
+              },
+            })
+          }
+        >
+          Toast con Boton adicional
+        </li>
       </ul>
       <Toaster />
     </main>
