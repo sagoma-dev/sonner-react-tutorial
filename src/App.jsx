@@ -1,6 +1,12 @@
 import { Toaster, toast } from "sonner";
 import { BiCheck } from "react-icons/bi";
 
+function simulatePromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(Math.round(Math.random() * 100) > 40 ? resolve : reject, 2000);
+  });
+}
+
 function App() {
   return (
     <main>
@@ -30,6 +36,17 @@ function App() {
           }
         >
           Toast con Boton adicional
+        </li>
+        <li
+          onClick={() => {
+            toast.promise(simulatePromise, {
+              error: "Algo salio mal",
+              success: "Todo correcto",
+              loading: "Cargando...",
+            });
+          }}
+        >
+          Toast con Promesas
         </li>
       </ul>
       <Toaster />
