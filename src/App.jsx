@@ -14,6 +14,13 @@ async function fetchUserData() {
   return await res.json();
 }
 
+const MyToast = ({ title, description }) => (
+  <div>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+);
+
 function App() {
   return (
     <main>
@@ -66,6 +73,18 @@ function App() {
           }}
         >
           Toast con Promesas y fn en la resolucion
+        </li>
+        <li
+          onClick={() => {
+            toast(
+              <MyToast
+                title={"Toast Con JSX"}
+                description={"Descripcion del toast pesonalizable"}
+              />
+            );
+          }}
+        >
+          Toast con jsx
         </li>
       </ul>
       <Toaster />
